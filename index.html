@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Africore × Trance AI — Commerce Proposal</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0910;
+  --surface:rgba(21,17,32,.6);
+  --border:rgba(186,140,255,.1);
+  --accent:#8B28E0;
+  --hi:#C06FFF;
+  --text:#EDE7FA;
+  --sub:#C0B8DC;
+  --muted:#7A7298;
+  --tag:rgba(139,40,224,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  height:100%;
+  overflow:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Satoshi',system-ui,sans-serif;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.scroll{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;}
+.scroll::-webkit-scrollbar{display:none;}
+
+.slide{
+  min-height:100svh;
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:4.5rem 6rem 5rem;
+  position:relative;
+  overflow:hidden;
+}
+
+.g{position:absolute;border-radius:50%;pointer-events:none;filter:blur(90px);opacity:.11;}
+.ga{width:500px;height:500px;background:var(--accent);top:-120px;right:-80px;}
+.gb{width:360px;height:360px;background:var(--hi);bottom:-60px;left:10%;}
+.gc{width:420px;height:420px;background:var(--accent);bottom:-80px;right:5%;}
+
+.hbar{
+  position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;
+  padding:1rem 3.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:200;pointer-events:none;
+}
+.brand{font-family:'Satoshi',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--muted);}
+.brand b{color:var(--sub);}
+.ptag{
+  font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--hi);border:1px solid rgba(192,111,255,.22);border-radius:100px;padding:.28rem .75rem;
+}
+
+.nav-dots{position:fixed;right:1.25rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:200;}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(186,140,255,.2);border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s;}
+.dot.on{background:var(--hi);transform:scale(1.4);}
+
+.fbar{
+  position:fixed;bottom:0;left:0;right:0;
+  padding:.8rem 3.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:200;pointer-events:none;
+}
+.fid{font-size:.62rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.ctr{font-size:.62rem;letter-spacing:.1em;color:var(--muted);}
+.ctr em{font-style:normal;color:var(--sub);}
+
+.eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+h1{font-size:clamp(2.6rem,5.5vw,4.4rem);font-weight:800;line-height:1.05;text-wrap:balance;}
+h2{font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;line-height:1.12;text-wrap:balance;}
+.hi{color:var(--hi);}
+.body{font-size:.95rem;font-weight:300;line-height:1.65;color:var(--sub);}
+
+.hero-pre{
+  display:flex;align-items:center;gap:.6rem;margin-bottom:1.75rem;
+  font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--hi);
+}
+.hero-pre::before{content:'';display:block;width:22px;height:1px;background:var(--hi);}
+.hero-desc{font-size:1.02rem;font-weight:300;color:var(--sub);line-height:1.6;max-width:46ch;margin:1.5rem 0 2.75rem;}
+
+.stats{display:flex;flex-wrap:wrap;}
+.stat{padding:.85rem 2rem .85rem 0;margin-right:2rem;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;padding-right:0;margin-right:0;}
+.stat-v{font-size:1.55rem;font-weight:800;color:var(--text);line-height:1;}
+.stat-l{font-size:.65rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.35rem;}
+
+.tcol{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:1.5rem;}
+
+.ilist{display:flex;flex-direction:column;}
+.irow{display:flex;align-items:flex-start;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--border);}
+.irow:first-child{border-top:1px solid var(--border);}
+.inum{font-size:.65rem;font-weight:500;color:var(--hi);min-width:1.4rem;padding-top:.15rem;}
+.itext{font-size:.9rem;font-weight:400;color:var(--sub);line-height:1.4;}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);margin-top:2rem;}
+.fstep{padding:1.75rem 1.5rem;border-right:1px solid var(--border);position:relative;}
+.fstep:last-child{border-right:none;}
+.fstep::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--hi));opacity:0;transition:opacity .3s;}
+.fstep:hover::before{opacity:1;}
+.fstep-tag{font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--hi);margin-bottom:.6rem;}
+.fstep-h{font-weight:700;font-size:1.05rem;color:var(--text);margin-bottom:.5rem;}
+.fstep-d{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.5;}
+
+.pcards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.75rem;}
+.pcard{padding:2rem 1.75rem;border:1px solid var(--border);background:var(--surface);position:relative;overflow:hidden;}
+.pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,40,224,.07),transparent);}
+.pcard-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--hi));}
+.pcard-spend{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;}
+.pcard-rev{font-size:2rem;font-weight:800;color:var(--text);line-height:1;position:relative;z-index:1;}
+.pcard-label{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:.4rem;position:relative;z-index:1;}
+
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem;}
+.ablock{padding:1.75rem;border:1px solid var(--border);background:var(--surface);}
+.ablock-h{font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:1.1rem;padding-bottom:.9rem;border-bottom:1px solid var(--border);}
+.ablock-h small{display:block;font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+.alist{display:flex;flex-direction:column;gap:.55rem;}
+.aitem{display:flex;align-items:flex-start;gap:.6rem;font-size:.86rem;font-weight:300;color:var(--sub);line-height:1.45;}
+.aitem::before{content:'—';color:var(--hi);font-size:.7rem;flex-shrink:0;margin-top:.1rem;}
+
+.terms-row{display:flex;gap:1.25rem;margin-top:1.25rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.tpill{background:var(--tag);border:1px solid rgba(192,111,255,.2);border-radius:4px;padding:.7rem 1.25rem;}
+.tpill-v{font-size:1.5rem;font-weight:800;color:var(--hi);line-height:1;}
+.tpill-d{font-size:.68rem;font-weight:400;color:var(--muted);margin-top:.2rem;}
+
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:1.75rem;}
+.sbox{background:var(--bg);padding:2rem 1.5rem;}
+.snum{font-size:2.2rem;font-weight:800;color:rgba(186,140,255,.1);line-height:1;margin-bottom:1rem;}
+.stitle{font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.45rem;}
+.sdesc{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.5;}
+
+.cta{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:2.25rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--hi);border-bottom:1px solid rgba(192,111,255,.4);padding-bottom:.25rem;
+}
+.note{margin-top:1.75rem;font-size:.7rem;font-weight:300;color:var(--muted);}
+.nbox{margin-top:1.5rem;padding:.9rem 1.2rem;border-left:2px solid var(--accent);background:var(--tag);font-size:.8rem;font-weight:300;color:var(--sub);line-height:1.6;}
+
+.p2list{display:flex;flex-direction:column;gap:1.25rem;}
+.p2item{padding:1.2rem 1.5rem;border:1px solid var(--border);background:var(--surface);}
+.p2item-h{font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.35rem;}
+.p2item-d{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.5;}
+
+@media(max-width:900px){
+  .slide{padding:5rem 1.75rem 4.5rem;}
+  .hbar,.fbar{padding:.9rem 1.75rem;}
+  .tcol{grid-template-columns:1fr;gap:1.75rem;}
+  .flow{grid-template-columns:1fr 1fr;}
+  .fstep:nth-child(2){border-right:none;}
+  .fstep:nth-child(3){border-top:1px solid var(--border);border-right:1px solid var(--border);}
+  .fstep:nth-child(4){border-top:1px solid var(--border);}
+  .pcards,.agrid{grid-template-columns:1fr;}
+  .sgrid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:540px){
+  html,body{overflow:auto;height:auto;}
+  .scroll{overflow:visible;height:auto;scroll-snap-type:none;}
+  .slide{min-height:auto;scroll-snap-align:none;padding:5rem 1.25rem 3.5rem;}
+  .nav-dots{display:none;}
+  .flow{grid-template-columns:1fr;}
+  .fstep{border-right:none;border-bottom:1px solid var(--border);}
+  .fstep:last-child{border-bottom:none;}
+  .sgrid{grid-template-columns:1fr;}
+  h1{font-size:clamp(2rem,8vw,3rem);}
+}
+@media(prefers-reduced-motion:reduce){.fstep::before,.dot{transition:none;}}
+</style>
+</head>
+<body>
+
+<header class="hbar">
+  <div class="brand"><b>Africore Tech</b> × Trance AI</div>
+  <span class="ptag">Proposal · Sep 2026</span>
+</header>
+
+<nav class="nav-dots" id="nd"></nav>
+
+<footer class="fbar">
+  <span class="fid">Africore × Trance AI — Commerce Proposal</span>
+  <span class="ctr"><em id="cn">01</em> / 07</span>
+</footer>
+
+<div class="scroll" id="sc">
+
+  <!-- 01 HERO -->
+  <section class="slide" data-i="0">
+    <div class="g ga"></div><div class="g gb"></div>
+    <div class="hero-pre">E-commerce infrastructure</div>
+    <h1>From click<br>to conversion.<br><span class="hi">Fully automated.</span></h1>
+    <p class="hero-desc">Trance AI builds and runs the full commerce system — storefront, automations, ads, and customer journey — so Africore focuses entirely on fulfillment.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-v">Phase 1</div><div class="stat-l">Underway now</div></div>
+      <div class="stat"><div class="stat-v">Oct 15</div><div class="stat-l">Hardware delivery</div></div>
+      <div class="stat"><div class="stat-v">KES 50K</div><div class="stat-l">Monthly retainer</div></div>
+      <div class="stat"><div class="stat-v">2%</div><div class="stat-l">Commission on automations</div></div>
+    </div>
+  </section>
+
+  <!-- 02 PHASE 1 BUILD -->
+  <section class="slide" data-i="1">
+    <div class="g ga"></div>
+    <div class="eyebrow">Phase 1 — Commerce build</div>
+    <div class="tcol">
+      <div>
+        <h2>The full infrastructure. Built once, running continuously.</h2>
+        <p class="body" style="margin-top:.9rem;">Everything migrated from WooCommerce, rebuilt for mobile-first speed and AI-powered automation from day one.</p>
+        <div class="nbox">Shopify subscription: <strong style="color:var(--sub);">KES 2,748/mo ($27)</strong> — paid directly to Shopify by Africore. Separate from the Trance AI retainer.</div>
+      </div>
+      <div class="ilist">
+        <div class="irow"><span class="inum">01</span><span class="itext">WooCommerce → Shopify migration</span></div>
+        <div class="irow"><span class="inum">02</span><span class="itext">Mobile-first storefront rebuild</span></div>
+        <div class="irow"><span class="inum">03</span><span class="itext">Product catalog migration & organization</span></div>
+        <div class="irow"><span class="inum">04</span><span class="itext">AI-powered WhatsApp & social follow-up</span></div>
+        <div class="irow"><span class="inum">05</span><span class="itext">Abandoned cart recovery systems</span></div>
+        <div class="irow"><span class="inum">06</span><span class="itext">Analytics, tracking & attribution setup</span></div>
+        <div class="irow"><span class="inum">07</span><span class="itext">Automated customer inquiry handling</span></div>
+        <div class="irow"><span class="inum">08</span><span class="itext">Conversion optimization infrastructure</span></div>
+        <div class="irow"><span class="inum">09</span><span class="itext">90-day implementation & optimization support</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 CUSTOMER JOURNEY -->
+  <section class="slide" data-i="2">
+    <div class="g gc"></div>
+    <div class="eyebrow">How it works</div>
+    <h2>Attraction to retention.<br>One automated system.</h2>
+    <p class="body" style="margin-top:.75rem;">Every touchpoint handled — no customer falls through the cracks.</p>
+    <div class="flow">
+      <div class="fstep"><div class="fstep-tag">Step 1</div><div class="fstep-h">Attract</div><div class="fstep-d">Meta & Google ads bring the right buyers to the storefront.</div></div>
+      <div class="fstep"><div class="fstep-tag">Step 2</div><div class="fstep-h">Nurture</div><div class="fstep-d">WhatsApp & social follow-ups keep prospects warm and moving forward.</div></div>
+      <div class="fstep"><div class="fstep-tag">Step 3</div><div class="fstep-h">Convert</div><div class="fstep-d">Optimized checkout, cart recovery, and inquiry automation close the sale.</div></div>
+      <div class="fstep"><div class="fstep-tag">Step 4</div><div class="fstep-h">Retain</div><div class="fstep-d">Post-purchase workflows bring customers back for repeat orders.</div></div>
+    </div>
+  </section>
+
+  <!-- 04 PHASE 2 TRAFFIC -->
+  <section class="slide" data-i="3">
+    <div class="g ga"></div>
+    <div class="eyebrow">Phase 2 — Traffic scaling</div>
+    <div class="tcol">
+      <div>
+        <h2>When the store is ready, we turn on the traffic.</h2>
+        <p class="body" style="margin-top:.9rem;">Trance AI runs the full paid and organic media operation. Africore focuses entirely on fulfillment.</p>
+        <div class="nbox">The AI commerce infrastructure makes every ad shilling more efficient — better conversions, automated follow-up, and repeat purchase workflows.</div>
+      </div>
+      <div class="p2list">
+        <div class="p2item"><div class="p2item-h">Meta & Google Ads</div><div class="p2item-d">Creative, targeting, daily optimization, and weekly performance reports.</div></div>
+        <div class="p2item"><div class="p2item-h">Social Media</div><div class="p2item-d">Content calendar, scheduling, and community management.</div></div>
+        <div class="p2item"><div class="p2item-h">Customer Journey Automation</div><div class="p2item-d">From first inquiry to order confirmation — fully automated, no drop-off.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 REVENUE PROJECTIONS -->
+  <section class="slide" data-i="4">
+    <div class="g gb"></div>
+    <div class="eyebrow">Revenue projections</div>
+    <h2>The numbers, by ad spend tier.</h2>
+    <p class="body" style="margin-top:.75rem;">Conservative estimates. The AI infrastructure improves efficiency at every level.</p>
+    <div class="pcards">
+      <div class="pcard">
+        <div class="pcard-bar"></div>
+        <div class="pcard-spend">Ad spend · KES 150K–200K / mo</div>
+        <div class="pcard-rev">KES 800K–2M</div>
+        <div class="pcard-label">estimated monthly revenue</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-bar"></div>
+        <div class="pcard-spend">Ad spend · KES 300K–500K / mo</div>
+        <div class="pcard-rev">KES 3M–5M+</div>
+        <div class="pcard-label">estimated monthly revenue range</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:0;margin-top:1.75rem;flex-wrap:wrap;">
+      <div class="stat" style="padding-right:1.75rem;margin-right:1.75rem;">
+        <div class="stat-v" style="font-size:.95rem;">Abandoned cart recovery</div>
+        <div class="stat-l">Automated follow-up recaptures lost revenue</div>
+      </div>
+      <div class="stat" style="border-right:none;padding-right:0;margin-right:0;">
+        <div class="stat-v" style="font-size:.95rem;">Repeat purchase workflows</div>
+        <div class="stat-l">Every customer worth more over time</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 AGREEMENT -->
+  <section class="slide" data-i="5">
+    <div class="g ga"></div>
+    <div class="eyebrow">The agreement</div>
+    <h2>What each side commits to.</h2>
+    <div class="terms-row">
+      <div class="tpill"><div class="tpill-v">KES 50K</div><div class="tpill-d">Monthly retainer · paid to Trance AI</div></div>
+      <div class="tpill"><div class="tpill-v">2%</div><div class="tpill-d">Commission on automation-fulfilled orders</div></div>
+      <div class="tpill"><div class="tpill-v">KES 2,748</div><div class="tpill-d">Shopify subscription · paid to Shopify ($27/mo)</div></div>
+    </div>
+    <div class="agrid">
+      <div class="ablock">
+        <div class="ablock-h"><small>Trance AI delivers</small>Commerce build & management</div>
+        <div class="alist">
+          <div class="aitem">Full Phase 1 build — all 9 deliverables</div>
+          <div class="aitem">Meta & Google Ads management</div>
+          <div class="aitem">Social media content & scheduling</div>
+          <div class="aitem">Customer journey automation end to end</div>
+          <div class="aitem">90-day optimization support</div>
+        </div>
+      </div>
+      <div class="ablock">
+        <div class="ablock-h"><small>Africore provides</small>Hardware & fulfillment</div>
+        <div class="alist">
+          <div class="aitem">MacBook Pro M5 — delivered by Oct 15, 2026</div>
+          <div class="aitem">iPad — delivered by Oct 15, 2026</div>
+          <div class="aitem">Shopify subscription (KES 2,748/mo to Shopify)</div>
+          <div class="aitem">Order fulfillment & inventory management</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 NEXT STEPS -->
+  <section class="slide" data-i="6">
+    <div class="g gc"></div>
+    <div class="eyebrow">Next steps</div>
+    <h2>From approval to live.</h2>
+    <div class="sgrid">
+      <div class="sbox"><div class="snum">01</div><div class="stitle">Approve</div><div class="sdesc">Confirm this proposal and the commercial terms.</div></div>
+      <div class="sbox"><div class="snum">02</div><div class="stitle">Hardware</div><div class="sdesc">MacBook Pro M5 + iPad delivered by Oct 15.</div></div>
+      <div class="sbox"><div class="snum">03</div><div class="stitle">Phase 1 Live</div><div class="sdesc">Storefront, automations, and analytics fully active.</div></div>
+      <div class="sbox"><div class="snum">04</div><div class="stitle">Scale</div><div class="sdesc">Phase 2 begins: ads, social, and full automation go live.</div></div>
+    </div>
+    <div class="cta">Approve to begin →</div>
+    <p class="note">Prepared by Trance AI for Africore Tech. All fees in Kenya Shillings unless noted.</p>
+  </section>
+
+</div>
+
+<script>
+const slides=[...document.querySelectorAll('[data-i]')];
+const nd=document.getElementById('nd');
+const cn=document.getElementById('cn');
+const sc=document.getElementById('sc');
+let cur=0;
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  b.className='dot'+(i===0?' on':'');
+  b.setAttribute('aria-label','Slide '+(i+1));
+  b.onclick=()=>goTo(i);
+  nd.appendChild(b);
+});
+function goTo(i){slides[i].scrollIntoView({behavior:'smooth'});}
+function update(i){
+  cur=i;
+  document.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+  cn.textContent=String(i+1).padStart(2,'0');
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)update(+e.target.dataset.i);});
+},{root:sc,threshold:.5});
+slides.forEach(s=>obs.observe(s));
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();goTo(Math.min(cur+1,slides.length-1));}
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();goTo(Math.max(cur-1,0));}
+});
+</script>
+</body>
+</html>
