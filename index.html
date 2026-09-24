@@ -168,6 +168,12 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
 
 .brand-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:clamp(1rem,2.5vh,1.8rem);}
 
+/* Remove white backgrounds on warm/light slides via multiply blend */
+.slide.warm .brand-header img,
+.slide.light .brand-header img {
+  mix-blend-mode:multiply;
+}
+
 #progress{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple-dark),var(--purple),var(--gold));transform:scaleX(0);transform-origin:left;z-index:60;transition:transform .15s linear;}
 
 #dots{position:fixed;right:clamp(.5rem,1.4vw,1rem);top:50%;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column;gap:9px;}
@@ -190,8 +196,9 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.8rem,1.6vw,1.2rem);}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.7rem,1.4vw,1rem);}
 
-.stat-num{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:900;letter-spacing:-.03em;line-height:1;}
-.stat-label{font-size:clamp(.65rem,.9vw,.78rem);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;}
+/* Phase 1 hero stats */
+.stat-num{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1;}
+.stat-label{font-size:clamp(.78rem,1vw,.9rem);font-weight:500;color:var(--muted);margin-top:.5rem;line-height:1.35;}
 .dark .stat-label{color:var(--muted-light);}
 
 .impact{border-left:3px solid var(--purple-light);padding:.9rem 1.2rem;background:var(--purple-bg);}
@@ -200,11 +207,11 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
 .light .impact .v,.warm .impact .v{color:var(--ink-text);}
 
 .dlist{display:flex;flex-direction:column;}
-.drow{display:flex;align-items:flex-start;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--card-border);}
+.drow{display:flex;align-items:flex-start;gap:.9rem;padding:.75rem 0;border-bottom:1px solid var(--card-border);}
 .drow:first-child{border-top:1px solid var(--card-border);}
 .light .drow,.warm .drow{border-color:var(--hairline);}
-.dnum{font-size:.6rem;font-weight:700;color:var(--purple);min-width:1.5rem;padding-top:.18rem;letter-spacing:.05em;}
-.dtext{font-size:clamp(.85rem,1.1vw,.95rem);font-weight:400;color:var(--muted-light);line-height:1.45;}
+.dnum{font-size:.62rem;font-weight:700;color:var(--purple);min-width:1.5rem;padding-top:.18rem;letter-spacing:.05em;}
+.dtext{font-size:clamp(.88rem,1.1vw,.98rem);font-weight:400;color:var(--muted-light);line-height:1.5;}
 .light .dtext,.warm .dtext{color:var(--muted);}
 
 .term-row{display:flex;gap:clamp(.8rem,1.4vw,1.2rem);flex-wrap:wrap;margin-top:1.25rem;}
@@ -217,44 +224,46 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
 .sbox{background:var(--paper-warm);padding:clamp(1.2rem,2.2vw,1.8rem);}
 .dark .sbox{background:var(--card);}
 .snum-big{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:rgba(160,4,223,0.12);line-height:1;margin-bottom:.8rem;}
-.stitle{font-weight:700;font-size:clamp(.85rem,1.2vw,.95rem);color:var(--ink-text);margin-bottom:.4rem;}
+.stitle{font-weight:700;font-size:clamp(.88rem,1.2vw,1rem);color:var(--ink-text);margin-bottom:.5rem;}
 .dark .stitle{color:var(--text);}
-.sdesc{font-size:clamp(.75rem,1vw,.85rem);font-weight:400;color:var(--muted);line-height:1.5;}
-
-/* Logo rendering — remove white backgrounds on warm/light slides */
-.slide.warm .brand-header img,
-.slide.light .brand-header img {
-  mix-blend-mode: multiply;
-}
+.sdesc{font-size:clamp(.78rem,1vw,.88rem);font-weight:400;color:var(--muted);line-height:1.55;}
 
 /* Journey flow */
-.flow{display:flex;align-items:stretch;gap:0;margin-top:1.8rem;}
+.flow{display:flex;align-items:stretch;gap:clamp(.6rem,1.2vw,1rem);margin-top:1.6rem;}
 .flow-step{flex:1;position:relative;}
-.flow-step + .flow-step::before{
-  content:"→";position:absolute;left:-1.1rem;top:50%;transform:translateY(-50%);
-  font-size:.85rem;font-weight:700;color:var(--purple);z-index:1;
-}
-.fcard{background:#fff;border:1px solid var(--hairline);border-radius:14px;padding:1rem 1.1rem;height:100%;}
-.fcard-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:.5rem;}
-.fcard-title{font-size:.95rem;font-weight:700;color:var(--ink-text);margin-bottom:.35rem;}
-.fcard-desc{font-size:.8rem;color:var(--muted);line-height:1.45;}
+.fcard{background:#fff;border:1px solid var(--hairline);border-radius:14px;padding:clamp(.9rem,1.5vw,1.3rem) clamp(1rem,1.5vw,1.3rem);height:100%;}
+.fcard-label{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:.55rem;}
+.fcard-title{font-size:clamp(.9rem,1.2vw,1.05rem);font-weight:700;color:var(--ink-text);margin-bottom:.45rem;}
+.fcard-desc{font-size:clamp(.78rem,.95vw,.88rem);color:var(--muted);line-height:1.5;}
+
+/* What's needed to start — checklist pill row */
+.start-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem;}
+.start-pill{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:8px;border:1px solid var(--card-border);background:var(--card);font-size:.8rem;font-weight:500;color:var(--muted-light);}
+.start-pill.done{border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.08);color:var(--success);}
+.start-pill.pend{border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.07);color:var(--gold);}
+.start-pill .dot{width:7px;height:7px;border-radius:50%;flex:none;}
+.start-pill.done .dot{background:var(--success);}
+.start-pill.pend .dot{background:var(--gold);}
 
 @media(max-width:900px){
   .split{grid-template-columns:1fr;gap:1.6rem;}
   .grid4{grid-template-columns:1fr 1fr;}
   .step-grid{grid-template-columns:1fr 1fr;}
-  .flow{flex-direction:column;gap:1rem;}
-  .flow-step + .flow-step::before{content:"↓";left:50%;top:-1.2rem;transform:translateX(-50%);}
+  .flow{flex-wrap:wrap;}
+  .flow-step{flex:1 1 calc(50% - .5rem);min-width:0;}
 }
 @media(max-width:600px){
   html,body{overflow:auto;height:auto;}
   .deck{overflow:visible;height:auto;scroll-snap-type:none;}
-  .slide{height:auto;min-height:100svh;scroll-snap-align:none;}
+  .slide{height:auto;min-height:100svh;scroll-snap-align:none;padding:1.4rem 1.2rem 3.5rem;}
   #dots,.kbd-hint{display:none;}
   .grid4,.grid3,.grid2{grid-template-columns:1fr;}
-  .step-grid{grid-template-columns:1fr;}
-  .flow{flex-direction:column;gap:1rem;}
-  .flow-step + .flow-step::before{content:"↓";left:50%;top:-1.2rem;transform:translateX(-50%);}
+  .step-grid{grid-template-columns:1fr 1fr;}
+  .flow{flex-direction:column;}
+  .flow-step{flex:none;width:100%;}
+  .inner{opacity:1!important;transform:none!important;}
+  .reveal{opacity:1!important;transform:none!important;}
+  .brand-header{flex-wrap:wrap;gap:.75rem;}
 }
 @media(prefers-reduced-motion:reduce){.reveal,.inner,.pulse-dot{animation:none;transition:none;}}
 </style>
@@ -267,14 +276,14 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
 
 <main class="deck">
 
-  <!-- SLIDE 1 — COVER (warm) -->
+  <!-- SLIDE 1 — COVER -->
   <section class="slide warm" data-label="Africore × Trance AI">
     <div class="inner">
       <div class="brand-header reveal d1">
-        <div style="display:flex;align-items:center;gap:.75rem;">
-          <img src="assets/africore-logo.png" alt="Africore Tech" style="height:28px;width:auto;" />
-          <span style="font-weight:900;font-size:1.1rem;color:var(--purple-deep);">+</span>
-          <img src="assets/trance-ai-logo.png" alt="Trance AI" style="height:24px;width:auto;" />
+        <div style="display:flex;align-items:center;gap:.9rem;">
+          <img src="assets/africore-logo.png" alt="Africore Tech" style="height:36px;width:auto;" />
+          <span style="font-weight:900;font-size:1.2rem;color:var(--purple-deep);">+</span>
+          <img src="assets/trance-ai-logo.png" alt="Trance AI" style="height:28px;width:auto;" />
         </div>
         <span class="badge purple">Commerce Proposal · Sep 2026</span>
       </div>
@@ -314,7 +323,7 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
     <div class="chrome-page">01 / 07</div>
   </section>
 
-  <!-- SLIDE 2 — PHASE 1 BUILD (dark) -->
+  <!-- SLIDE 2 — PHASE 1 BUILD -->
   <section class="slide dark" data-label="Phase 1 Build">
     <div class="inner">
       <div class="eyebrow reveal d1"><span class="pulse-dot"></span> Phase 1 — Commerce Build</div>
@@ -329,27 +338,27 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
         </div>
         <div class="col reveal d5" style="gap:1.1rem;">
           <div class="card">
-            <div style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-light);margin-bottom:.6rem;">Foundation</div>
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-light);margin-bottom:.7rem;">Foundation</div>
             <div class="dlist">
               <div class="drow"><span class="dnum">01</span><span class="dtext">WooCommerce → Shopify migration</span></div>
               <div class="drow"><span class="dnum">02</span><span class="dtext">Mobile-first storefront rebuild</span></div>
-              <div class="drow"><span class="dnum">03</span><span class="dtext">Full product catalog migration & organization</span></div>
+              <div class="drow"><span class="dnum">03</span><span class="dtext">Full product catalog — organized &amp; live</span></div>
             </div>
           </div>
           <div class="card">
-            <div style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">Automation</div>
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;">Automation</div>
             <div class="dlist">
-              <div class="drow"><span class="dnum">04</span><span class="dtext">WhatsApp & social inquiry automation</span></div>
-              <div class="drow"><span class="dnum">05</span><span class="dtext">Abandoned cart recovery system</span></div>
-              <div class="drow"><span class="dnum">06</span><span class="dtext">Repeat purchase & retention workflows</span></div>
+              <div class="drow"><span class="dnum">04</span><span class="dtext">WhatsApp &amp; social inquiry automation</span></div>
+              <div class="drow"><span class="dnum">05</span><span class="dtext">Abandoned cart recovery</span></div>
+              <div class="drow"><span class="dnum">06</span><span class="dtext">Repeat purchase &amp; retention flows</span></div>
             </div>
           </div>
           <div class="card" style="border-color:rgba(160,4,223,0.3);">
-            <div style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-light);margin-bottom:.6rem;">Intelligence</div>
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-light);margin-bottom:.7rem;">Intelligence</div>
             <div class="dlist">
-              <div class="drow"><span class="dnum">07</span><span class="dtext">Analytics, tracking & attribution setup</span></div>
-              <div class="drow"><span class="dnum">08</span><span class="dtext">Conversion optimization infrastructure</span></div>
-              <div class="drow"><span class="dnum">09</span><span class="dtext">90-day implementation & optimization support</span></div>
+              <div class="drow"><span class="dnum">07</span><span class="dtext">Analytics, tracking &amp; attribution</span></div>
+              <div class="drow"><span class="dnum">08</span><span class="dtext">Conversion optimization setup</span></div>
+              <div class="drow"><span class="dnum">09</span><span class="dtext">90-day post-launch support</span></div>
             </div>
           </div>
         </div>
@@ -359,40 +368,40 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
     <div class="chrome-page">02 / 07</div>
   </section>
 
-  <!-- SLIDE 3 — BUYER JOURNEY (light) -->
+  <!-- SLIDE 3 — BUYER JOURNEY -->
   <section class="slide light" data-label="Buyer Journey">
     <div class="inner">
       <div class="eyebrow reveal d1"><span class="pulse-dot"></span> The Buyer Journey</div>
       <h2 class="title reveal d2" style="margin-top:.6rem;">Every Africore customer,<br>automatically handled.</h2>
-      <p class="subtitle reveal d3" style="margin-top:.5rem;">From the first ad impression to the second purchase — no manual work, no dropped leads.</p>
+      <p class="subtitle reveal d3" style="margin-top:.5rem;">From first ad impression to second purchase — no manual work, no dropped leads.</p>
 
       <div class="flow reveal d4">
         <div class="flow-step">
           <div class="fcard">
             <div class="fcard-label">Discovery</div>
             <div class="fcard-title">Meta or Google</div>
-            <div class="fcard-desc">Kenyan tech buyer sees an Africore laptop on Facebook, Instagram, or Google Shopping.</div>
+            <div class="fcard-desc">Kenyan tech buyer sees an Africore laptop or iPad on Facebook, Instagram, or Google Shopping.</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="fcard">
             <div class="fcard-label">Inquiry</div>
             <div class="fcard-title">WhatsApp Automation</div>
-            <div class="fcard-desc">Customer clicks to WhatsApp. Automation responds instantly — product info, pricing, refurb grades.</div>
+            <div class="fcard-desc">Customer taps to WhatsApp. Automation responds instantly — specs, pricing, refurb grades — no staff needed.</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="fcard" style="border-color:var(--purple);">
             <div class="fcard-label" style="color:var(--purple);">Convert</div>
             <div class="fcard-title" style="color:var(--purple-deep);">Optimized Checkout</div>
-            <div class="fcard-desc">Shopify storefront built for Kenyan buyers. Cart recovery catches anyone who drops off.</div>
+            <div class="fcard-desc">Shopify store built for Kenyan buyers. Cart recovery catches anyone who drops off before paying.</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="fcard" style="border-color:var(--purple);background:var(--paper-warm);">
             <div class="fcard-label" style="color:var(--purple);">Retain</div>
             <div class="fcard-title" style="color:var(--purple-deep);">Repeat Purchase</div>
-            <div class="fcard-desc" style="font-weight:600;color:var(--ink-text);">Automated sequences bring customers back for accessories, upgrades, and referrals.</div>
+            <div class="fcard-desc">Automated follow-ups bring customers back for accessories, upgrades, and referrals.</div>
           </div>
         </div>
       </div>
@@ -406,31 +415,31 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
     <div class="chrome-page" style="color:var(--muted);">03 / 07</div>
   </section>
 
-  <!-- SLIDE 4 — PHASE 2 TRAFFIC (warm) -->
+  <!-- SLIDE 4 — PHASE 2 TRAFFIC -->
   <section class="slide warm" data-label="Phase 2 Traffic">
     <div class="inner">
-      <div class="eyebrow reveal d1"><span class="pulse-dot"></span> Phase 2 — Traffic Scaling</div>
+      <div class="eyebrow reveal d1"><span class="pulse-dot"></span> Phase 2 — Traffic &amp; Paid Media</div>
       <div class="split" style="margin-top:.8rem;">
         <div>
           <h2 class="title reveal d2">The store is built to convert. <span class="purple-gradient">Now we drive the traffic.</span></h2>
-          <p class="lede reveal d3" style="margin-top:.8rem;">Phase 1 is the infrastructure. Phase 2 is the accelerator. Trance AI runs the full paid and organic media operation while Africore focuses on fulfillment.</p>
+          <p class="lede reveal d3" style="margin-top:.8rem;">Phase 2 is the accelerator. Trance AI manages the full paid and organic media operation — Meta, Google, and social — while Africore focuses on fulfillment.</p>
           <div class="impact reveal d4" style="margin-top:1.4rem;border-left-color:var(--purple);">
-            <span class="k">The compounding advantage</span>
-            <span class="v" style="color:var(--ink-text);">Every shilling spent on ads is backed by a conversion system that catches what other stores lose. Cart recovery, WhatsApp follow-up, and repeat workflows make Phase 2 significantly more efficient than cold traffic alone.</span>
+            <span class="k">All included in the retainer</span>
+            <span class="v" style="color:var(--ink-text);">Ad management on Meta and Google Ads, creative production, daily optimization, and weekly reporting — no separate agency fees.</span>
           </div>
         </div>
         <div class="col reveal d5" style="gap:1rem;">
           <div class="card">
-            <h3 style="font-size:.95rem;color:var(--ink-text);margin-bottom:.4rem;">Meta &amp; Google Ads</h3>
-            <p style="font-size:.85rem;color:var(--muted);line-height:1.5;">Creative, targeting, and daily optimization built for Kenyan tech hardware buyers. Weekly performance reports.</p>
+            <h3 style="font-size:.95rem;color:var(--ink-text);margin-bottom:.4rem;">Meta Ads</h3>
+            <p style="font-size:.85rem;color:var(--muted);line-height:1.5;">Facebook &amp; Instagram campaigns — creative, targeting, and daily optimization for Kenyan tech hardware buyers.</p>
+          </div>
+          <div class="card">
+            <h3 style="font-size:.95rem;color:var(--ink-text);margin-bottom:.4rem;">Google Ads</h3>
+            <p style="font-size:.85rem;color:var(--muted);line-height:1.5;">Search and Shopping campaigns. Capture buyers actively searching for MacBooks and iPads in Kenya.</p>
           </div>
           <div class="card">
             <h3 style="font-size:.95rem;color:var(--ink-text);margin-bottom:.4rem;">Social Media</h3>
-            <p style="font-size:.85rem;color:var(--muted);line-height:1.5;">Content calendar, scheduling, and community management. Unboxings, reviews, and deals that drive direct inquiry.</p>
-          </div>
-          <div class="card" style="border-color:var(--purple);">
-            <h3 style="font-size:.95rem;color:var(--purple-deep);margin-bottom:.4rem;">Full Journey Automation</h3>
-            <p style="font-size:.85rem;color:var(--muted);line-height:1.5;">Ad click → WhatsApp → Checkout → Retention. Zero drop-off at any stage.</p>
+            <p style="font-size:.85rem;color:var(--muted);line-height:1.5;">Content calendar, posting, and community management. Unboxings, reviews, and deals that drive direct inquiry.</p>
           </div>
         </div>
       </div>
@@ -439,7 +448,7 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
     <div class="chrome-page" style="color:var(--muted);">04 / 07</div>
   </section>
 
-  <!-- SLIDE 5 — REVENUE PROJECTIONS (dark) -->
+  <!-- SLIDE 5 — REVENUE PROJECTIONS -->
   <section class="slide dark" data-label="Revenue Projections">
     <div class="inner">
       <div class="eyebrow reveal d1"><span class="pulse-dot"></span> Revenue Projections</div>
@@ -459,12 +468,12 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
       </div>
       <div class="grid2 reveal d5" style="margin-top:1rem;">
         <div class="card">
-          <h3 style="font-size:.9rem;margin-bottom:.35rem;">Cart recovery alone</h3>
-          <p style="font-size:.82rem;color:var(--muted-light);line-height:1.5;">Industry average: 15–20% of abandoned carts recovered. For Africore's hardware price points, that's meaningful revenue from buyers who nearly converted.</p>
+          <h3 style="font-size:.9rem;margin-bottom:.35rem;">Cart recovery</h3>
+          <p style="font-size:.82rem;color:var(--muted-light);line-height:1.5;">Industry average: 15–20% of abandoned carts recovered. At Africore's hardware price points, that's significant revenue from buyers who were already interested.</p>
         </div>
         <div class="card">
-          <h3 style="font-size:.9rem;margin-bottom:.35rem;">Repeat purchase workflows</h3>
-          <p style="font-size:.82rem;color:var(--muted-light);line-height:1.5;">A customer who bought a refurbished MacBook is the best lead for an upgrade, an iPad, or accessories. Automated sequences handle the follow-up.</p>
+          <h3 style="font-size:.9rem;margin-bottom:.35rem;">Repeat purchase</h3>
+          <p style="font-size:.82rem;color:var(--muted-light);line-height:1.5;">A customer who bought a MacBook is the best lead for an upgrade, an iPad, or accessories. Automated sequences handle the follow-up without any manual effort.</p>
         </div>
       </div>
     </div>
@@ -472,7 +481,7 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
     <div class="chrome-page">05 / 07</div>
   </section>
 
-  <!-- SLIDE 6 — AGREEMENT (light) -->
+  <!-- SLIDE 6 — THE AGREEMENT -->
   <section class="slide light" data-label="The Agreement">
     <div class="inner">
       <div class="eyebrow reveal d1"><span class="pulse-dot"></span> The Agreement</div>
@@ -485,21 +494,21 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
       <div class="grid2 reveal d4" style="margin-top:1.4rem;">
         <div class="card">
           <div style="font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;">Trance AI delivers</div>
-          <h3 style="font-size:.95rem;color:var(--ink-text);margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--hairline);">Full commerce build &amp; ongoing management</h3>
-          <div class="col" style="gap:.5rem;">
+          <h3 style="font-size:.95rem;color:var(--ink-text);margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--hairline);">Full build &amp; ongoing management</h3>
+          <div class="col" style="gap:.55rem;">
             <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>Full Phase 1 build — all 9 deliverables</div>
-            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>WhatsApp, cart, &amp; retention automation live</div>
-            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>Meta &amp; Google Ads management (Phase 2)</div>
+            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>WhatsApp, cart &amp; retention automation live</div>
+            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>Meta Ads &amp; Google Ads management</div>
             <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>Social media content &amp; scheduling</div>
-            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>90-day optimization &amp; performance support</div>
+            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--purple);font-size:.7rem;margin-top:.15rem;">✓</span>90-day optimization support</div>
           </div>
         </div>
         <div class="card" style="border-color:var(--purple);">
           <div style="font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;">Africore provides</div>
           <h3 style="font-size:.95rem;color:var(--purple-deep);margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid rgba(160,4,223,0.15);">Hardware &amp; fulfillment</h3>
-          <div class="col" style="gap:.5rem;">
-            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--gold);font-size:.7rem;margin-top:.15rem;">→</span>MacBook Pro M5 — delivered Oct 15, 2026</div>
-            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--gold);font-size:.7rem;margin-top:.15rem;">→</span>iPad — delivered Oct 15, 2026</div>
+          <div class="col" style="gap:.55rem;">
+            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--gold);font-size:.7rem;margin-top:.15rem;">→</span>MacBook Pro 14" M5 — 16GB / 512GB, delivered Oct 15</div>
+            <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--gold);font-size:.7rem;margin-top:.15rem;">→</span>iPad Pro 11" M4 — 8GB / 256GB, WiFi + Cellular, delivered Oct 15</div>
             <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--gold);font-size:.7rem;margin-top:.15rem;">→</span>Shopify subscription (KES 2,748 / mo)</div>
             <div style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);line-height:1.4;"><span style="color:var(--gold);font-size:.7rem;margin-top:.15rem;">→</span>Order fulfillment &amp; inventory management</div>
           </div>
@@ -510,7 +519,7 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
     <div class="chrome-page" style="color:var(--muted);">06 / 07</div>
   </section>
 
-  <!-- SLIDE 7 — NEXT STEPS (dark) -->
+  <!-- SLIDE 7 — NEXT STEPS -->
   <section class="slide dark" data-label="Next Steps">
     <div class="inner">
       <div class="eyebrow reveal d1"><span class="pulse-dot"></span> Next Steps</div>
@@ -518,30 +527,32 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
       <div class="step-grid reveal d3">
         <div class="sbox dark">
           <div class="snum-big">01</div>
-          <div class="stitle">Approve</div>
-          <div class="sdesc">Confirm this proposal and lock in the commercial terms. Phase 1 begins immediately.</div>
+          <div class="stitle">Approve &amp; Pay</div>
+          <div class="sdesc">Confirm this proposal. First month's retainer (KES 50K) paid to Trance AI. Phase 1 begins immediately.</div>
         </div>
         <div class="sbox dark">
           <div class="snum-big">02</div>
-          <div class="stitle">Hardware</div>
-          <div class="sdesc">MacBook Pro M5 + iPad delivered to Trance AI by Oct 15. Full build environment ready.</div>
+          <div class="stitle">Ads Setup</div>
+          <div class="sdesc">Payment card added to Meta Ads and Google Ads accounts. Trance AI gains access to both — ready for Phase 2.</div>
         </div>
         <div class="sbox dark">
           <div class="snum-big">03</div>
-          <div class="stitle">Phase 1 Live</div>
-          <div class="sdesc">Shopify store, automations, tracking, and cart recovery — fully built, tested, and live.</div>
+          <div class="stitle">Hardware</div>
+          <div class="sdesc">MacBook Pro 14" M5 + iPad Pro 11" M4 delivered to Trance AI by Oct 15. Build environment ready.</div>
         </div>
         <div class="sbox dark">
           <div class="snum-big" style="color:rgba(160,4,223,0.25);">04</div>
-          <div class="stitle" style="color:var(--purple-light);">Scale</div>
-          <div class="sdesc">Phase 2 begins: paid ads, social media, and the full automation stack running at full speed.</div>
+          <div class="stitle" style="color:var(--purple-light);">Go Live</div>
+          <div class="sdesc">Shopify store, automations, and paid ads — fully live. Africore goes from zero to a running commerce system.</div>
         </div>
       </div>
-      <div class="impact reveal d4" style="margin-top:1.6rem;">
-        <span class="k">Ready to begin</span>
-        <span class="v">Approve this proposal to lock in the terms. Trance AI starts Phase 1 immediately — Africore goes from zero online revenue to a fully automated commerce system in weeks.</span>
+      <div class="start-row reveal d4">
+        <div class="start-pill done"><span class="dot"></span> Meta Ads access — confirmed</div>
+        <div class="start-pill pend"><span class="dot"></span> Payment card · Meta Ads</div>
+        <div class="start-pill pend"><span class="dot"></span> Payment card · Google Ads</div>
+        <div class="start-pill pend"><span class="dot"></span> Retainer payment · KES 50K</div>
       </div>
-      <p style="margin-top:1.6rem;font-size:.65rem;font-weight:400;letter-spacing:.08em;color:var(--muted);opacity:.6;" class="reveal d5">Prepared by Trance AI for Africore Tech. All fees in Kenya Shillings unless noted.</p>
+      <p style="margin-top:1.4rem;font-size:.65rem;font-weight:400;letter-spacing:.08em;color:var(--muted);opacity:.6;" class="reveal d5">Prepared by Trance AI for Africore Tech. All fees in Kenya Shillings unless noted.</p>
     </div>
     <div class="chrome-foot"><span class="fdot"></span> Next Steps</div>
     <div class="chrome-page">07 / 07</div>
