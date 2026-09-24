@@ -221,6 +221,12 @@ h1,h2,h3{font-weight:900;line-height:1.04;letter-spacing:-.025em;}
 .dark .stitle{color:var(--text);}
 .sdesc{font-size:clamp(.75rem,1vw,.85rem);font-weight:400;color:var(--muted);line-height:1.5;}
 
+/* Logo rendering — remove white backgrounds on warm/light slides */
+.slide.warm .brand-header img,
+.slide.light .brand-header img {
+  mix-blend-mode: multiply;
+}
+
 /* Journey flow */
 .flow{display:flex;align-items:stretch;gap:0;margin-top:1.8rem;}
 .flow-step{flex:1;position:relative;}
